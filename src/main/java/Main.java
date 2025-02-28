@@ -9,29 +9,22 @@ import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.layout.VBox;
 import javafx.scene.image.ImageView;
+import javafx.scene.control.Label;
+import java.util.ArrayList;
 
-public class Main extends Application implements EventHandler<ActionEvent> {
+public class Main extends Application {
     DeckOfCards deck = new DeckOfCards();
     Button DrawHand;
     Button Shuffle;
+    ArrayList<String> curentHand;
 
     @Override
     public void start(Stage stage) {
         // Set the title of the stage
         stage.setTitle("Playing Card App");
 
-        // Create a vertical box to hold the buttons
-        VBox rightMenue = new VBox();
-        DrawHand = new Button("Draw Hand");
-        DrawHand.setOnAction(this);
-
-        DrawHand.setOnAction(e -> {
-            System.out.println("Drawing a hand of 5 cards: " + deck.dealHand(5));
-        });
-
-        Shuffle = new Button("Shuffle Deck");
-        Shuffle.setOnAction(this);
-        rightMenue.getChildren().addAll(DrawHand, Shuffle);
+        HBox hand = new HBox();
+        
 
         // Create an image view for clubs
         Image clubsImage = new Image(getClass().getResourceAsStream("/clubs.png"));     
@@ -57,7 +50,49 @@ public class Main extends Application implements EventHandler<ActionEvent> {
         spadesView.setFitHeight(30);
         spadesView.setFitWidth(30);
 
-        HBox hand = new HBox();
+        // Create a vertical box to hold the buttons
+        VBox rightMenue = new VBox();
+        DrawHand = new Button("Draw Hand");
+
+        DrawHand.setOnAction(e -> {
+            hand.getChildren().clear();
+            curentHand = deck.dealHand(5);
+            System.out.println("Drawing a hand " + curentHand);
+            for (String card : curentHand) {
+                String suit = card.substring(0, 1);
+                String value = card.substring(1);
+                if (value.equals("11")) {
+                    value = "J";
+                } else if (value.equals("12")) {
+                    value = "Q";
+                } else if (value.equals("13")) {
+                    value = "K";
+                } else if (value.equals("14")) {
+                    value = "A";
+                }
+
+                if (suit.equals("H")) {
+                    hand.getChildren().add(heartsView);
+                } else if (suit.equals("D")) {
+                    hand.getChildren().add(dimondsView);
+                } else if (suit.equals("C")) {
+                    hand.getChildren().add(new ImageView(clubsImage));
+                } else if (suit.equals("S")) {
+                    hand.getChildren().add(spadesView);
+                }
+                hand.getChildren().add(new Label(value));
+            }
+        });
+
+
+        Shuffle = new Button("Shuffle Deck");
+        Shuffle.setOnAction(e -> {
+            System.out.println("Shuffling the deck");
+            deck.shuffle();
+        });
+
+        rightMenue.getChildren().addAll(DrawHand, Shuffle);
+
 
         // Create a border pane to hold the buttons
         BorderPane borderPane = new BorderPane();
@@ -76,16 +111,5 @@ public class Main extends Application implements EventHandler<ActionEvent> {
         launch(args);
     }
 
-    public void handle(ActionEvent event) {
-        if (event.getSource() == DrawHand) {
-            System.out.println("Drawing a hand of 5 cards: " + deck.dealHand(5));
-        }
-        
-        if (event.getSource() == Shuffle) {
-            System.out.println("Shuffling the deck");
-            deck.shuffle();
-        } 
-
-    }
 }
 
