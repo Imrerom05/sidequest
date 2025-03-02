@@ -16,6 +16,7 @@ public class Main extends Application {
     DeckOfCards deck = new DeckOfCards();
     Button DrawHand;
     Button Shuffle;
+    Button Checkhand;
     ArrayList<String> curentHand;
 
     @Override
@@ -24,24 +25,18 @@ public class Main extends Application {
         stage.setTitle("Playing Card App");
 
         HBox hand = new HBox();
+        VBox rightMenue = new VBox();
+        HBox bottomMenue = new HBox();
         
 
-        // Create an image view for clubs
+        // Create an images for cards
         Image clubsImage = new Image(getClass().getResourceAsStream("/clubs.png"));     
-        
-
-        // Create an image view for dimonds
         Image dimondsImage = new Image(getClass().getResourceAsStream("/dimonds.png"));     
-        
-
-        // Create an image view for hearts
         Image heartsImage = new Image(getClass().getResourceAsStream("/hearts.png"));
-        
-        // Create an image view for spades
         Image spadesImage = new Image(getClass().getResourceAsStream("/spades.png"));
         
+
         // Create a vertical box to hold the buttons
-        VBox rightMenue = new VBox();
         DrawHand = new Button("Draw Hand");
 
         DrawHand.setOnAction(e -> {
@@ -93,7 +88,12 @@ public class Main extends Application {
             deck.shuffle();
         });
 
-        rightMenue.getChildren().addAll(DrawHand, Shuffle);
+        Checkhand = new Button("Cheek Hand");
+        Shuffle.setOnAction(e -> {
+            System.out.println("Checking the hand");
+        });
+
+        rightMenue.getChildren().addAll(DrawHand, Shuffle, Checkhand);
 
 
         // Create a border pane to hold the buttons
