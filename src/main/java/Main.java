@@ -28,28 +28,18 @@ public class Main extends Application {
 
         // Create an image view for clubs
         Image clubsImage = new Image(getClass().getResourceAsStream("/clubs.png"));     
-        ImageView clubsView = new ImageView(clubsImage);
-        clubsView.setFitHeight(30);
-        clubsView.setFitWidth(30);
+        
 
         // Create an image view for dimonds
         Image dimondsImage = new Image(getClass().getResourceAsStream("/dimonds.png"));     
-        ImageView dimondsView = new ImageView(dimondsImage);
-        dimondsView.setFitHeight(30);
-        dimondsView.setFitWidth(30);
+        
 
         // Create an image view for hearts
-        Image heartsImage = new Image(getClass().getResourceAsStream("/hearts.png"));     
-        ImageView heartsView = new ImageView(heartsImage);
-        heartsView.setFitHeight(30);
-        heartsView.setFitWidth(30);
-
+        Image heartsImage = new Image(getClass().getResourceAsStream("/hearts.png"));
+        
         // Create an image view for spades
         Image spadesImage = new Image(getClass().getResourceAsStream("/spades.png"));
-        ImageView spadesView = new ImageView(spadesImage);
-        spadesView.setFitHeight(30);
-        spadesView.setFitWidth(30);
-
+        
         // Create a vertical box to hold the buttons
         VBox rightMenue = new VBox();
         DrawHand = new Button("Draw Hand");
@@ -72,12 +62,24 @@ public class Main extends Application {
                 }
 
                 if (suit.equals("H")) {
+                    ImageView heartsView = new ImageView(heartsImage);
+                    heartsView.setFitHeight(30);
+                    heartsView.setFitWidth(30);
                     hand.getChildren().add(heartsView);
                 } else if (suit.equals("D")) {
+                    ImageView dimondsView = new ImageView(dimondsImage);
+                    dimondsView.setFitHeight(30);
+                    dimondsView.setFitWidth(30);
                     hand.getChildren().add(dimondsView);
                 } else if (suit.equals("C")) {
-                    hand.getChildren().add(new ImageView(clubsImage));
+                    ImageView clubsView = new ImageView(clubsImage);
+                    clubsView.setFitHeight(30);
+                    clubsView.setFitWidth(30);
+                    hand.getChildren().add(clubsView);
                 } else if (suit.equals("S")) {
+                    ImageView spadesView = new ImageView(spadesImage);
+                    spadesView.setFitHeight(30);
+                    spadesView.setFitWidth(30);
                     hand.getChildren().add(spadesView);
                 }
                 hand.getChildren().add(new Label(value));
