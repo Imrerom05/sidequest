@@ -90,13 +90,14 @@ public class Main extends Application {
         });
 
         Checkhand = new Button("Cheek Hand");
-        Shuffle.setOnAction(e -> {
+        Checkhand.setOnAction(e -> {
             System.out.println("Checking the hand");
-            bottomMenue.getChildren().add(new Label("Sum: " + handChecker.sum(curentHand)));
-            bottomMenue.getChildren().add(new Label("Flush: " + handChecker.isFlush(curentHand)));
+            bottomMenue.getChildren().clear();
+            bottomMenue.getChildren().add(new Label("Sum: " + handChecker.sum(curentHand) + " "));
+            bottomMenue.getChildren().add(new Label("Flush: " + handChecker.isFlush(curentHand)+ " "));
             bottomMenue.getChildren()
-                    .add(new Label("Queen of Spades: " + handChecker.checkForQueenOfSpades(curentHand)));
-            bottomMenue.getChildren().add(new Label("Amount of Hearts: " + handChecker.amountOfHearts(curentHand)));
+                    .add(new Label("Queen of Spades: " + handChecker.checkForQueenOfSpades(curentHand)+ " "));
+            bottomMenue.getChildren().add(new Label("Amount of Hearts: " + handChecker.amountOfHearts(curentHand)+ " "));
         });
 
         rightMenue.getChildren().addAll(DrawHand, Shuffle, Checkhand);
@@ -106,6 +107,7 @@ public class Main extends Application {
         BorderPane borderPane = new BorderPane();
         borderPane.setRight(rightMenue);
         borderPane.setCenter(hand);
+        borderPane.setBottom(bottomMenue);
 
 
         // Create a scene
