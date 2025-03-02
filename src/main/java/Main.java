@@ -18,6 +18,7 @@ public class Main extends Application {
     Button Shuffle;
     Button Checkhand;
     ArrayList<String> curentHand;
+    HandChecker handChecker = new HandChecker();
 
     @Override
     public void start(Stage stage) {
@@ -91,6 +92,11 @@ public class Main extends Application {
         Checkhand = new Button("Cheek Hand");
         Shuffle.setOnAction(e -> {
             System.out.println("Checking the hand");
+            bottomMenue.getChildren().add(new Label("Sum: " + handChecker.sum(curentHand)));
+            bottomMenue.getChildren().add(new Label("Flush: " + handChecker.isFlush(curentHand)));
+            bottomMenue.getChildren()
+                    .add(new Label("Queen of Spades: " + handChecker.checkForQueenOfSpades(curentHand)));
+            bottomMenue.getChildren().add(new Label("Amount of Hearts: " + handChecker.amountOfHearts(curentHand)));
         });
 
         rightMenue.getChildren().addAll(DrawHand, Shuffle, Checkhand);
