@@ -1,10 +1,8 @@
 package sidequest.view;
 
-import java.util.HashMap;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
@@ -26,8 +24,9 @@ public class StartPageView extends VBox {
    * @param savedGamesMap A map containing saved game names and their corresponding types.
    */
   public StartPageView() {
+    VBox space = new VBox(50);
     
-    setSpacing(10);
+    setSpacing(20);
     getStyleClass().addAll("start-page", "background");
     setAlignment(Pos.TOP_CENTER);
     
@@ -36,29 +35,29 @@ public class StartPageView extends VBox {
     title.getStyleClass().addAll("standard", "text-60");
     
     // Information Label
-    Label information = new Label("Enter your username and password to begin your adventure!");
-    information.getStyleClass().addAll("standard", "text-40");
+    Label information = new Label("Enter your username and password");
+    information.getStyleClass().addAll("standard", "text-30");
     
     // Username input
     username.setPromptText("Username");
-    VBox.setMargin(username, new Insets(0, 100, 0, 100));
-    //username.getStyleClass().addAll("standard");
+    VBox.setMargin(username, new Insets(0, 175, 0, 175));
+    username.getStyleClass().addAll("text-field", "standard");
 
     // Pasword input
     password.setPromptText("Password");
-    VBox.setMargin(username, new Insets(0, 100, 0, 100));
-    //password.getStyleClass().addAll("standard");
+    VBox.setMargin(password, new Insets(0, 175, 0, 175));
+    password.getStyleClass().addAll("text-field", "standard");
     
     // Login button
-    //login.getStyleClass().addAll("button", "text-18", "fantasy");
+    login.getStyleClass().addAll("standard");
     login.setDisable(true); // Initially disabled
 
     // New User button
-    //login.getStyleClass().addAll("button", "text-18", "fantasy");
+    newUser.getStyleClass().addAll("standard");
     newUser.setDisable(true); // Initially disabled
     
     // Exit button
-    //exitButton.getStyleClass().addAll("button", "large-size", "fantasy");
+    exitButton.getStyleClass().addAll("standard");
        
     // Layout for saved game options
     HBox H = new HBox(10);
@@ -67,7 +66,7 @@ public class StartPageView extends VBox {
     HBox.setMargin(H, new Insets(5, 5, 5, 5));
     
     // Add all components to the main VBox
-    getChildren().addAll(title, information, username, password, H, exitButton);
+    getChildren().addAll(space, title, information, username, password, H, exitButton);
     }
     
     // Getters for controller access
