@@ -30,15 +30,15 @@ public class MyWindow extends Application {
     NavigationManager.setStage(primaryStage);
 
     // Sets the application icon (make sure /favicon.png exists in resources)
-    //Image iconImage = new Image("/images/icon.png");
+    Image iconImage = new Image("/images/icon.png");
     primaryStage.setTitle("Sidequest");
-    //primaryStage.getIcons().add(iconImage);
+    primaryStage.getIcons().add(iconImage);
 
     // Load the start page UI from its controller
     Scene scene = new Scene(new StartPageController().getView());
 
     // Apply the stylesheet
-    //scene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
+    scene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
 
     // Set up and show the stage
     primaryStage.setScene(scene);

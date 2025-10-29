@@ -1,10 +1,8 @@
 package sidequest.view;
 
-import java.util.HashMap;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
@@ -14,13 +12,11 @@ import javafx.scene.layout.VBox;
 public class StartPageView extends VBox {
 
   // UI components
-  private final TextField gameNameField = new TextField();
-  private final ComboBox<String> gameSelectorBox = new ComboBox<>();
-  private final ComboBox<String> savedGames = new ComboBox<>();
-  private final Button confirmButton = new Button("Confirm");
-  private final Button loadGameButton = new Button("Load Game");
-  private final Button exitButton = new Button("Leave Runeborne");
-  private final ComboBox<Integer> playerCountBox = new ComboBox<>();
+  private final TextField username = new TextField();
+  private final TextField password = new TextField();
+  private final Button login = new Button("Login");
+  private final Button newUser = new Button("Create New User");
+  private final Button exitButton = new Button("Exit Game");
 
   /**
    * Constructs the start page view.
@@ -28,124 +24,71 @@ public class StartPageView extends VBox {
    * @param savedGamesMap A map containing saved game names and their corresponding types.
    */
   public StartPageView() {
-    setSpacing(10);
+    VBox space = new VBox(50);
+    
+    setSpacing(20);
     getStyleClass().addAll("start-page", "background");
     setAlignment(Pos.TOP_CENTER);
-
+    
     // Title
-    Label title = new Label("Welcome to the kingdom of Runeborne");
-    title.getStyleClass().addAll("fantasy", "text-gold", "text-55");
+    Label title = new Label("Welcome to Sidequest");
+    title.getStyleClass().addAll("standard", "text-60");
+    
+    // Information Label
+    Label information = new Label("Enter your username and password");
+    information.getStyleClass().addAll("standard", "text-30");
+    
+    // Username input
+    username.setPromptText("Username");
+    VBox.setMargin(username, new Insets(0, 175, 0, 175));
+    username.getStyleClass().addAll("text-field", "standard");
 
-    // Subtitle
-    Label subtitle = new Label("Choose your next adventure!");
-    subtitle.getStyleClass().addAll("fantasy", "text-gold", "text-40");
+    // Pasword input
+    password.setPromptText("Password");
+    VBox.setMargin(password, new Insets(0, 175, 0, 175));
+    password.getStyleClass().addAll("text-field", "standard");
+    
+    // Login button
+    login.getStyleClass().addAll("button", "standard");
+    login.setDisable(true); // Initially disabled
 
-    // Game name input
-    gameNameField.setPromptText("Adventure Name");
-    VBox.setMargin(gameNameField, new Insets(0, 100, 0, 100));
-    gameNameField.getStyleClass().addAll("fantasy-text", "fantasy");
-
-    // Player count selector
-    playerCountBox.getStyleClass().addAll("combo-box", "text-18", "fantasy");
-    playerCountBox.getItems().addAll(2, 3, 4, 5);
-    playerCountBox.setPromptText("Select Number of Heroes");
-
-    // Game type selector
-    gameSelectorBox.getStyleClass().addAll("combo-box", "text-18", "fantasy");
-    gameSelectorBox
-        .getItems()
-        .addAll("Snakes and Ladders Classic", "Snakes and Ladders Quiz", "Risk");
-    gameSelectorBox.setPromptText("Select an Adventure");
-
-    // Confirm new game button
-    confirmButton.getStyleClass().addAll("button", "text-18", "fantasy");
-    confirmButton.setDisable(true); // Initially disabled
-
-    // "OR" separator label
-    Label or = new Label("OR");
-    or.getStyleClass().addAll("fantasy", "text-30", "text-gold");
-
-    // Saved games selector
-    savedGames.getStyleClass().addAll("combo-box", "text-18", "fantasy");
-    savedGames.setPromptText("Select a saved adventure");
-
-    // Load saved game button
-    loadGameButton.getStyleClass().addAll("button", "text-18", "fantasy");
-    loadGameButton.setDisable(true); // Initially disabled
-
+    // New User button
+    newUser.getStyleClass().addAll("button");
+    newUser.setDisable(true); // Initially disabled
+    
     // Exit button
-    exitButton.getStyleClass().addAll("button", "large-size", "fantasy");
-
-    // Layout for new game options
-    HBox newGameBox = new HBox(10);
-    newGameBox.setAlignment(Pos.CENTER);
-    newGameBox.getChildren().addAll(gameNameField, playerCountBox, gameSelectorBox, confirmButton);
-    HBox.setMargin(newGameBox, new Insets(5, 5, 5, 5));
-
+    exitButton.getStyleClass().addAll("button", "standard");
+       
     // Layout for saved game options
-    HBox savedGameBox = new HBox(10);
-    savedGameBox.setAlignment(Pos.CENTER);
-    savedGameBox.getChildren().addAll(savedGames, loadGameButton);
-    HBox.setMargin(savedGameBox, new Insets(5, 5, 5, 5));
-
+    HBox H = new HBox(10);
+    H.setAlignment(Pos.CENTER);
+    H.getChildren().addAll(login, newUser);
+    HBox.setMargin(H, new Insets(5, 5, 5, 5));
+    
     // Add all components to the main VBox
-    getChildren().addAll(title, subtitle, gameNameField, newGameBox, or, savedGameBox, exitButton);
+    getChildren().addAll(space, title, information, username, password, H, exitButton);
+    }
+    
+    // Getters for controller access
+
+
+  public TextField getUsernameField() {
+    return username;
+  }
+  
+
+  public TextField getPaswordField() {
+    return password;
   }
 
-  // Getters for controller access
 
-  /**
-   * Retrieves the ComboBox used for selecting a game type.
-   *
-   * @return the ComboBox for selecting a game type
-   */
-  public ComboBox<String> getGameSelectorBox() {
-    return gameSelectorBox;
+  public Button getLoginButton() {
+    return login;
   }
 
-  /**
-   * Retrieves the ComboBox used for selecting a saved game.
-   *
-   * @return the ComboBox for selecting a saved game
-   */
-  public ComboBox<String> getSavedGamesBox() {
-    return savedGames;
-  }
 
-  /**
-   * Retrieves the TextField used for entering a new game name.
-   *
-   * @return the TextField for entering a new game name
-   */
-  public TextField getGameNameField() {
-    return gameNameField;
-  }
-
-  /**
-   * Retrieves the ComboBox used for selecting the number of players.
-   *
-   * @return the ComboBox for selecting number of players
-   */
-  public ComboBox<Integer> getPlayerCountBox() {
-    return playerCountBox;
-  }
-
-  /**
-   * Retrieves the button used to confirm the creation of a new game.
-   *
-   * @return the button to confirm new game creation
-   */
-  public Button getConfirmButton() {
-    return confirmButton;
-  }
-
-  /**
-   * Retrieves the button used to load a saved game.
-   *
-   * @return the button to load a saved game
-   */
-  public Button getLoadGameButton() {
-    return loadGameButton;
+  public Button getNewUserButton() {
+    return newUser;
   }
 
   /**

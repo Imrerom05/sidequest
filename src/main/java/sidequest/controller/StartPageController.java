@@ -1,9 +1,4 @@
 package sidequest.controller;
-
-import javafx.application.Platform;
-import java.io.UncheckedIOException;
-import java.util.HashMap;
-
 import javafx.beans.value.ChangeListener;
 import sidequest.MyWindow;
 import sidequest.view.StartPageView;
@@ -32,19 +27,20 @@ public class StartPageController {
 
   /** Initializes UI event listeners and bindings for buttons and input fields. */
   private void initialize() {
-    view.getConfirmButton().setOnAction(event -> handleConfirm());
+    view.getLoginButton().setOnAction(event -> login());
+    view.getNewUserButton().setOnAction(event -> newUser());
     view.getExitButton().setOnAction(event -> MyWindow.closeApplication());
-    view.getLoadGameButton().setOnAction(event -> handleLoad());
 
     ChangeListener<Object> enabler =
-        (obs, oldV, newV) -> view.getConfirmButton().setDisable(!allInputsValid());
-    view.getGameNameField().textProperty().addListener(enabler);
-    view.getPlayerCountBox().valueProperty().addListener(enabler);
-    view.getGameSelectorBox().valueProperty().addListener(enabler);
+        (obs, oldV, newV) -> {
+          boolean disable = !allInputsValid();
+          view.getLoginButton().setDisable(disable);
+          view.getNewUserButton().setDisable(disable);
+        };
 
-    view.getSavedGamesBox()
-        .valueProperty()
-        .addListener((obs, oldV, newV) -> view.getLoadGameButton().setDisable(newV.isEmpty()));
+
+    view.getUsernameField().textProperty().addListener(enabler);
+    view.getPaswordField().textProperty().addListener(enabler);
   }
 
   /**
@@ -53,48 +49,18 @@ public class StartPageController {
    * @return true if all required inputs are valid; false otherwise
    */
   private boolean allInputsValid() {
-    return !view.getGameNameField().getText().isBlank()
-        && view.getPlayerCountBox().getValue() != null
-        && view.getGameSelectorBox().getValue() != null;
+    return !view.getUsernameField().getText().isBlank()
+        && !view.getPaswordField().getText().isBlank();
   }
 
-  /** Handles confirmation for starting a new game. Validates input before proceeding. */
-  private void handleConfirm() {
-    String gameName = view.getGameNameField().getText();
-    Integer selectedPlayerCount = view.getPlayerCountBox().getValue();
 
-    if (gameName.contains(",")) {
-      return;
-    }
-
-    if (selectedPlayerCount != null && !gameName.isEmpty()) {
-      startGame(selectedPlayerCount, view.getGameSelectorBox().getValue(), gameName);
-    } else {
-    }
+  private void login() {
+    String username = view.getUsernameField().getText();
+    String password = view.getPaswordField().getText();
   }
 
-  /**
-   * Starts a new game based on user input.
-   *
-   * @param playerCount number of players for the game
-   * @param gameType the selected game type ("Lader Game Classic", "Lader Game Quiz", or "Risk")
-   * @param gameName the name of the game to be created
-   */
-  private void startGame(Integer playerCount, String gameType, String gameName) {
-     // NavigationManager.navigate(new CreatePlayerPageController(game).getView());
-  }
-
-  /**
-   * Handles loading a previously saved game from disk based on user selection. Navigates to the
-   * appropriate game page view.
-   */
-  private void handleLoad() {
-    String selectedGame = view.getSavedGamesBox().getValue();
-    if (selectedGame != null) {
-      String[] gameData = selectedGame.split("\\(");
-      String gameName = gameData[0].trim();
-      String gameType = gameData[1].replace(")", "").trim();
-
-    }
+  private void newUser() {
+    String username = view.getUsernameField().getText();
+    String password = view.getPaswordField().getText();
   }
 }
