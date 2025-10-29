@@ -63,5 +63,31 @@ public class FileHandler {
       throw new UncheckedIOException("Failed to load file when loading players", e);
     }
   }
+
+  public static void deleteUser(String username) {
+    List<String> users = new ArrayList<>();
+    try (Scanner scanner = new Scanner(new File(getFilePath("user.csv")))) {
+      while (scanner.hasNextLine()) {
+        String line = scanner.nextLine();
+        String[] data = line.split(",");
+        if (data.length != 2) {
+          throw new IllegalArgumentException("Invalid player data format");
+        }
+        if (!data[0].equals(username)) {
+          users.add(line);
+        }
+      }
+    } catch (FileNotFoundException e) {
+      throw new UncheckedIOException("Failed to load file when loading players", e);
+    }
+
+    try (PrintWriter writer = new PrintWriter(new FileWriter(getFilePath("user.csv")))) {
+      for (String user : users) {
+        writer.println(user);
+      }
+    } catch (IOException e) {
+      throw new UncheckedIOException("Failed to save players. Couldn't write to file", e);
+    }
+  }
 }
 

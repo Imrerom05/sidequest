@@ -1,6 +1,7 @@
 package sidequest.controller;
 
 import sidequest.model.FileHandler;
+import sidequest.model.game.Game;
 import sidequest.MyWindow;
 import javafx.beans.value.ChangeListener;
 import sidequest.view.PopUp;
@@ -62,6 +63,7 @@ public class StartPageController {
 
     switch (FileHandler.login(username, password)) {
       case 1:
+        Game.setUser(username);
         NavigationManager.navigate(new WorldPageController().getView());
         break;
 
@@ -75,6 +77,7 @@ public class StartPageController {
           return;
         } else if (PopUp.showConfirmation("New User", "User not found. Would you like to create a new account?")) {
           FileHandler.newUser(username, password);
+          Game.setUser(username);
           NavigationManager.navigate(new WorldPageController().getView());
         }
 

@@ -26,7 +26,7 @@ public class WorldPageView extends VBox {
     exitButton.getStyleClass().addAll("button", "standard", "large-size");
     deleteUserButton.getStyleClass().addAll("button", "standard", "large-size");
 
-    getChildren().addAll(title, newAdventureButton, continueAdventureButton, deleteUserButton, backButton, exitButton);
+    getChildren().addAll(title, newAdventureButton, continueAdventureButton, backButton, exitButton, deleteUserButton);
   }
 
   public Button getNewAdventureButton() {
