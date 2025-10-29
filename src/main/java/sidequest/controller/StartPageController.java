@@ -1,6 +1,11 @@
 package sidequest.controller;
-import javafx.beans.value.ChangeListener;
+
+import sidequest.model.FileHandler;
+import sidequest.model.game.Game;
 import sidequest.MyWindow;
+import javafx.beans.value.ChangeListener;
+import sidequest.view.PopUp;
+import sidequest.NavigationManager;
 import sidequest.view.StartPageView;
 
 /**
@@ -28,14 +33,12 @@ public class StartPageController {
   /** Initializes UI event listeners and bindings for buttons and input fields. */
   private void initialize() {
     view.getLoginButton().setOnAction(event -> login());
-    view.getNewUserButton().setOnAction(event -> newUser());
     view.getExitButton().setOnAction(event -> MyWindow.closeApplication());
 
     ChangeListener<Object> enabler =
         (obs, oldV, newV) -> {
           boolean disable = !allInputsValid();
           view.getLoginButton().setDisable(disable);
-          view.getNewUserButton().setDisable(disable);
         };
 
 
@@ -57,10 +60,33 @@ public class StartPageController {
   private void login() {
     String username = view.getUsernameField().getText();
     String password = view.getPaswordField().getText();
-  }
 
-  private void newUser() {
-    String username = view.getUsernameField().getText();
-    String password = view.getPaswordField().getText();
+    switch (FileHandler.login(username, password)) {
+      case 1:
+        Game.setUser(username);
+        NavigationManager.navigate(new WorldPageController().getView());
+        break;
+
+      case 2:
+        PopUp.showInfo("Login Failed", "Invalid username or password.");
+        break;
+
+      case 3:
+        if (username.contains(",") || password.contains(",")) {
+          PopUp.showWarning("Invalid Input", "Username and password cannot contain commas.");
+          return;
+        } else if (PopUp.showConfirmation("New User", "User not found. Would you like to create a new account?")) {
+          FileHandler.newUser(username, password);
+          Game.setUser(username);
+          NavigationManager.navigate(new WorldPageController().getView());
+        }
+
+
+        break;  
+    
+      default:
+        PopUp.showError("Login Error", "An unexpected error occurred during login.");
+        break;
+    }
   }
 }

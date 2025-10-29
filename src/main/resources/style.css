@@ -10,6 +10,11 @@
   -fx-background-image: url("images/background-loginpage.png");
 }
 
+.world-page {
+  background-image: url("images/background-worldpage.png");
+  -fx-background-image: url("images/background-worldpage.png");
+}
+
 .standard {
   font-family: "Algerian", "Copperplate", fantasy;
   -fx-font-family: "Algerian", "Copperplate", fantasy;
@@ -23,9 +28,10 @@
 .text-18 { font-size: 18px; -fx-font-size: 18px; }
 .text-16 { font-size: 16px; -fx-font-size: 16px; }
 
-
 /* Input field */
-.text-field {
+.text-field, .password-field {
+    font-family: "Algerian", "Copperplate", fantasy;
+    -fx-font-family: "Algerian", "Copperplate", fantasy;
     -fx-font-size: 22px;
     -fx-text-fill: #081926;
     -fx-background-color: linear-gradient(to bottom, #ffffff, #f0fcff);
@@ -43,6 +49,8 @@
 
 .button {
     /* Colors & basic layout */
+    font-family: "Algerian", "Copperplate", fantasy;
+    -fx-font-family: "Algerian", "Copperplate", fantasy;
     -fx-background-color: linear-gradient(to bottom, #4a3724, #3a2a1a);
     -fx-text-fill: #e6d8b9;
     -fx-border-color: #8b6a4b;
@@ -87,4 +95,11 @@
 .button:focused {
     -fx-border-color: #cba96b;
     -fx-effect: dropshadow(gaussian, rgba(255, 215, 0, 0.5), 10, 0, 0, 3);
+}
+
+.large-size {
+  font-size: 22px;
+  -fx-font-size: 22px;
+  -fx-pref-width: 250px;
+  -fx-pref-height: 60px;
 }

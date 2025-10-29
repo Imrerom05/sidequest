@@ -4,6 +4,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -13,9 +14,8 @@ public class StartPageView extends VBox {
 
   // UI components
   private final TextField username = new TextField();
-  private final TextField password = new TextField();
+  private final PasswordField password = new PasswordField();
   private final Button login = new Button("Login");
-  private final Button newUser = new Button("Create New User");
   private final Button exitButton = new Button("Exit Game");
 
   /**
@@ -24,11 +24,9 @@ public class StartPageView extends VBox {
    * @param savedGamesMap A map containing saved game names and their corresponding types.
    */
   public StartPageView() {
-    VBox space = new VBox(50);
-    
-    setSpacing(20);
+    setSpacing(25);
     getStyleClass().addAll("start-page", "background");
-    setAlignment(Pos.TOP_CENTER);
+    setAlignment(Pos.CENTER);
     
     // Title
     Label title = new Label("Welcome to Sidequest");
@@ -46,27 +44,17 @@ public class StartPageView extends VBox {
     // Pasword input
     password.setPromptText("Password");
     VBox.setMargin(password, new Insets(0, 175, 0, 175));
-    password.getStyleClass().addAll("text-field", "standard");
+    password.getStyleClass().addAll( "text-field","standard");
     
     // Login button
-    login.getStyleClass().addAll("button", "standard");
+    login.getStyleClass().addAll("button", "standard", "large-size");
     login.setDisable(true); // Initially disabled
-
-    // New User button
-    newUser.getStyleClass().addAll("button");
-    newUser.setDisable(true); // Initially disabled
     
     // Exit button
-    exitButton.getStyleClass().addAll("button", "standard");
-       
-    // Layout for saved game options
-    HBox H = new HBox(10);
-    H.setAlignment(Pos.CENTER);
-    H.getChildren().addAll(login, newUser);
-    HBox.setMargin(H, new Insets(5, 5, 5, 5));
+    exitButton.getStyleClass().addAll("button", "standard", "large-size");
     
     // Add all components to the main VBox
-    getChildren().addAll(space, title, information, username, password, H, exitButton);
+    getChildren().addAll(title, information, username, password, login, exitButton);
     }
     
     // Getters for controller access
@@ -84,11 +72,6 @@ public class StartPageView extends VBox {
 
   public Button getLoginButton() {
     return login;
-  }
-
-
-  public Button getNewUserButton() {
-    return newUser;
   }
 
   /**
