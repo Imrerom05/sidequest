@@ -41,17 +41,50 @@
     -fx-effect: dropshadow(three-pass-box, rgba(163,247,196,0.45), 10, 0, 0, 2);
 }
 
-/* Ethereal Button */
 .button {
-    -fx-text-fill: white;
-    -fx-font-size: 20px;
-    -fx-text-transform: uppercase;
-    -fx-background-color: linear-gradient(to right, #7bdff6, #a3f7c4, #f7c948);
-    -fx-background-radius: 10;
-    -fx-padding: 10 18;
-    -fx-effect: dropshadow(three-pass-box, rgba(123,223,246,0.3), 10, 0, 0, 3);
+    /* Colors & basic layout */
+    -fx-background-color: linear-gradient(to bottom, #4a3724, #3a2a1a);
+    -fx-text-fill: #e6d8b9;
+    -fx-border-color: #8b6a4b;
+    -fx-border-width: 2;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+
+    /* Font & spacing */
+    -fx-font-family: "Cinzel Decorative", "Georgia", serif;
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-padding: 10 22;
+    -fx-cursor: hand;
+
+    /* Shadows & depth */
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 6, 0, 0, 2);
+
+    /* Slight glow imitation */
+    -fx-background-insets: 0, 1;
 }
+
+/* ───────────────
+   Hover State
+   ─────────────── */
 .button:hover {
-    -fx-effect: dropshadow(three-pass-box, rgba(123,223,246,0.45), 15, 0, 0, 3);
-    -fx-translate-y: -2;
+    -fx-background-color: linear-gradient(to bottom, #5a4a3a, #463626);
+    -fx-effect: dropshadow(gaussian, rgba(255, 215, 0, 0.6), 12, 0, 0, 2);
+}
+
+/* ───────────────
+   Pressed State
+   ─────────────── */
+.button:pressed {
+    -fx-background-color: linear-gradient(to bottom, #2a1a0a, #3a2a1a);
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 4, 0, 0, 1);
+    -fx-translate-y: 1;
+}
+
+/* ───────────────
+   Optional: Focus Ring
+   ─────────────── */
+.button:focused {
+    -fx-border-color: #cba96b;
+    -fx-effect: dropshadow(gaussian, rgba(255, 215, 0, 0.5), 10, 0, 0, 3);
 }

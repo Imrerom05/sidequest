@@ -49,15 +49,15 @@ public class StartPageView extends VBox {
     password.getStyleClass().addAll("text-field", "standard");
     
     // Login button
-    login.getStyleClass().addAll("standard");
+    login.getStyleClass().addAll("button", "standard");
     login.setDisable(true); // Initially disabled
 
     // New User button
-    newUser.getStyleClass().addAll("standard");
+    newUser.getStyleClass().addAll("button");
     newUser.setDisable(true); // Initially disabled
     
     // Exit button
-    exitButton.getStyleClass().addAll("standard");
+    exitButton.getStyleClass().addAll("button", "standard");
        
     // Layout for saved game options
     HBox H = new HBox(10);
