@@ -4,6 +4,7 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -13,7 +14,7 @@ public class StartPageView extends VBox {
 
   // UI components
   private final TextField username = new TextField();
-  private final TextField password = new TextField();
+  private final PasswordField password = new PasswordField();
   private final Button login = new Button("Login");
   private final Button exitButton = new Button("Exit Game");
 
