@@ -1,9 +1,4 @@
 package sidequest.controller;
-
-import javafx.application.Platform;
-import java.io.UncheckedIOException;
-import java.util.HashMap;
-
 import javafx.beans.value.ChangeListener;
 import sidequest.MyWindow;
 import sidequest.view.StartPageView;
