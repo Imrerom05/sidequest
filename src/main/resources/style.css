@@ -10,6 +10,11 @@
   -fx-background-image: url("images/background-loginpage.png");
 }
 
+.world-page {
+  background-image: url("background-worldpage.png");
+  -fx-background-image: url("background-worldpage.png");
+}
+
 .standard {
   font-family: "Algerian", "Copperplate", fantasy;
   -fx-font-family: "Algerian", "Copperplate", fantasy;
@@ -24,12 +29,10 @@
 .text-16 { font-size: 16px; -fx-font-size: 16px; }
 
 
-.password-field {
-    -fx-echo-char: '\u2022'; /* Bullet character */
-}
-
 /* Input field */
 .text-field {
+    font-family: "Algerian", "Copperplate", fantasy;
+    -fx-font-family: "Algerian", "Copperplate", fantasy;
     -fx-font-size: 22px;
     -fx-text-fill: #081926;
     -fx-background-color: linear-gradient(to bottom, #ffffff, #f0fcff);
@@ -47,6 +50,8 @@
 
 .button {
     /* Colors & basic layout */
+    font-family: "Algerian", "Copperplate", fantasy;
+    -fx-font-family: "Algerian", "Copperplate", fantasy;
     -fx-background-color: linear-gradient(to bottom, #4a3724, #3a2a1a);
     -fx-text-fill: #e6d8b9;
     -fx-border-color: #8b6a4b;

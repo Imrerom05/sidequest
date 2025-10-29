@@ -23,11 +23,9 @@ public class StartPageView extends VBox {
    * @param savedGamesMap A map containing saved game names and their corresponding types.
    */
   public StartPageView() {
-    VBox space = new VBox(50);
-    
     setSpacing(20);
     getStyleClass().addAll("start-page", "background");
-    setAlignment(Pos.TOP_CENTER);
+    setAlignment(Pos.CENTER);
     
     // Title
     Label title = new Label("Welcome to Sidequest");
@@ -55,7 +53,7 @@ public class StartPageView extends VBox {
     exitButton.getStyleClass().addAll("button", "standard");
     
     // Add all components to the main VBox
-    getChildren().addAll(space, title, information, username, password, login, exitButton);
+    getChildren().addAll(title, information, username, password, login, exitButton);
     }
     
     // Getters for controller access

@@ -4,6 +4,7 @@ import sidequest.model.FileHandler;
 import sidequest.MyWindow;
 import javafx.beans.value.ChangeListener;
 import sidequest.view.PopUp;
+import sidequest.NavigationManager;
 import sidequest.view.StartPageView;
 
 /**
@@ -61,7 +62,7 @@ public class StartPageController {
 
     switch (FileHandler.login(username, password)) {
       case 1:
-        PopUp.showInfo("Login Successful", "Welcome back, " + username + "!");
+        NavigationManager.navigate(new WorldPageController().getView());
         break;
 
       case 2:
@@ -74,6 +75,7 @@ public class StartPageController {
           return;
         } else if (PopUp.showConfirmation("New User", "User not found. Would you like to create a new account?")) {
           FileHandler.newUser(username, password);
+          NavigationManager.navigate(new WorldPageController().getView());
         }
 
 
