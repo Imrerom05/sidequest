@@ -10,7 +10,7 @@ public class User {
   }
 
   public boolean tryLogin(String username, String password) {
-    return this.password.equals(password) && this.username.equals(username);
+    return this.password.equals(password) && this.username.toLowerCase().equals(username.toLowerCase());
   }
 
   public String getUsername() {

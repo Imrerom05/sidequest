@@ -24,6 +24,10 @@
 .text-16 { font-size: 16px; -fx-font-size: 16px; }
 
 
+.password-field {
+    -fx-echo-char: '\u2022'; /* Bullet character */
+}
+
 /* Input field */
 .text-field {
     -fx-font-size: 22px;

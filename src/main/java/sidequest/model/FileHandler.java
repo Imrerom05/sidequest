@@ -30,7 +30,7 @@ public class FileHandler {
 
 
   public static void saveUser(User user) {
-    try (PrintWriter writer = new PrintWriter(new FileWriter(getFilePath("user.csv")))) {
+    try (PrintWriter writer = new PrintWriter(new FileWriter(getFilePath("user.csv"), true))) {
       writer.println(user.getSaveFormat());
     } catch (IOException e) {
       throw new UncheckedIOException("Failed to save players. Couldn't write to file", e);

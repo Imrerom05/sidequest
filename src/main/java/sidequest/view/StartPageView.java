@@ -46,7 +46,7 @@ public class StartPageView extends VBox {
     // Pasword input
     password.setPromptText("Password");
     VBox.setMargin(password, new Insets(0, 175, 0, 175));
-    password.getStyleClass().addAll("text-field", "standard");
+    password.getStyleClass().addAll( "text-field","standard");
     
     // Login button
     login.getStyleClass().addAll("button", "standard");

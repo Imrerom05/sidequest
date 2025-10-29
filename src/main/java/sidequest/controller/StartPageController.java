@@ -73,7 +73,12 @@ public class StartPageController {
     String username = view.getUsernameField().getText();
     String password = view.getPaswordField().getText();
 
-    User newUser = new User(username, password);
-    FileHandler.saveUser(newUser);
+    if(FileHandler.tryLogin(username, password) != null) {
+      PopUp.showInfo("User Exists", "Username already taken. Please choose another.");
+      return;
+    } else {
+      User newUser = new User(username, password);
+      FileHandler.saveUser(newUser);
+    }
   }
 }
