@@ -29,9 +29,9 @@ public class FileHandler {
   }
 
 
-  public static void saveUser(User user) {
+  public static void newUser(String username, String password) {
     try (PrintWriter writer = new PrintWriter(new FileWriter(getFilePath("user.csv"), true))) {
-      writer.println(user.getSaveFormat());
+      writer.println(username + "," + password);
     } catch (IOException e) {
       throw new UncheckedIOException("Failed to save players. Couldn't write to file", e);
     }
@@ -43,31 +43,25 @@ public class FileHandler {
    * @param gameName The name of the saved game
    * @return A list of Player objects reconstructed from file
    */
-  private static ArrayList<User> loadPlayers() {
-
-    ArrayList<User> users = new ArrayList<>();
-
+  public static int login(String username, String password) {
     try (Scanner scanner = new Scanner(new File(getFilePath("user.csv")))) {
       while (scanner.hasNextLine()) {
         String[] data = scanner.nextLine().split(",");
 
-        if (data.length != 2) { 
+        if (data.length != 2) {
           throw new IllegalArgumentException("Invalid player data format");
         }
 
-        users.add(new User(data[0], data[1]));
+        if (data[0].equals(username) && data[1].equals(password)) {
+          return 1; // Login successful
+        } else if (data[0].equals(username)) {
+          return 2; // Username found but password incorrect
+        }
       }
+      return 3; // Username not found
     } catch (FileNotFoundException e) {
       throw new UncheckedIOException("Failed to load file when loading players", e);
     }
-    return users;
-  }
-
-  public static User tryLogin(String username, String password) {
-    return loadPlayers().stream()
-        .filter(user -> user.tryLogin(username, password))
-        .findFirst()
-        .orElse(null);
   }
 }
 

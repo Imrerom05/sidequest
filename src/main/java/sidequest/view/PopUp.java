@@ -171,5 +171,21 @@ public class PopUp {
 
     dialog.showAndWait();
   }
+
+  public static boolean showConfirmation(String title, String message) {
+    Alert alert = new Alert(AlertType.CONFIRMATION);
+    alert.setTitle(title);
+    alert.setHeaderText(null);
+    alert.setContentText(message);
+    alert.setGraphic(null);
+    alert
+        .getDialogPane()
+        .getStylesheets()
+        .add(PopUp.class.getResource("/style.css").toExternalForm());
+    alert.getDialogPane().getStyleClass().addAll("fantasy-dialog", "fantasy");
+
+    Optional<ButtonType> result = alert.showAndWait();
+    return result.isPresent() && result.get() == ButtonType.OK;
+  }
 }
 

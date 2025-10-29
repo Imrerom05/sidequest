@@ -15,7 +15,6 @@ public class StartPageView extends VBox {
   private final TextField username = new TextField();
   private final TextField password = new TextField();
   private final Button login = new Button("Login");
-  private final Button newUser = new Button("Create New User");
   private final Button exitButton = new Button("Exit Game");
 
   /**
@@ -51,22 +50,12 @@ public class StartPageView extends VBox {
     // Login button
     login.getStyleClass().addAll("button", "standard");
     login.setDisable(true); // Initially disabled
-
-    // New User button
-    newUser.getStyleClass().addAll("button");
-    newUser.setDisable(true); // Initially disabled
     
     // Exit button
     exitButton.getStyleClass().addAll("button", "standard");
-       
-    // Layout for saved game options
-    HBox H = new HBox(10);
-    H.setAlignment(Pos.CENTER);
-    H.getChildren().addAll(login, newUser);
-    HBox.setMargin(H, new Insets(5, 5, 5, 5));
     
     // Add all components to the main VBox
-    getChildren().addAll(space, title, information, username, password, H, exitButton);
+    getChildren().addAll(space, title, information, username, password, login, exitButton);
     }
     
     // Getters for controller access
@@ -84,11 +73,6 @@ public class StartPageView extends VBox {
 
   public Button getLoginButton() {
     return login;
-  }
-
-
-  public Button getNewUserButton() {
-    return newUser;
   }
 
   /**

@@ -2,7 +2,6 @@ package sidequest.controller;
 
 import sidequest.model.FileHandler;
 import sidequest.MyWindow;
-import sidequest.model.User;
 import javafx.beans.value.ChangeListener;
 import sidequest.view.PopUp;
 import sidequest.view.StartPageView;
@@ -32,14 +31,12 @@ public class StartPageController {
   /** Initializes UI event listeners and bindings for buttons and input fields. */
   private void initialize() {
     view.getLoginButton().setOnAction(event -> login());
-    view.getNewUserButton().setOnAction(event -> newUser());
     view.getExitButton().setOnAction(event -> MyWindow.closeApplication());
 
     ChangeListener<Object> enabler =
         (obs, oldV, newV) -> {
           boolean disable = !allInputsValid();
           view.getLoginButton().setDisable(disable);
-          view.getNewUserButton().setDisable(disable);
         };
 
 
@@ -62,23 +59,29 @@ public class StartPageController {
     String username = view.getUsernameField().getText();
     String password = view.getPaswordField().getText();
 
-    if (FileHandler.tryLogin(username, password) != null) {
-      PopUp.showInfo("Login Successful", "Welcome back, " + username + "!");
-    } else {
-      PopUp.showInfo("Login Failed", "Invalid username or password.");
-    }
-  }
+    switch (FileHandler.login(username, password)) {
+      case 1:
+        PopUp.showInfo("Login Successful", "Welcome back, " + username + "!");
+        break;
 
-  private void newUser() {
-    String username = view.getUsernameField().getText();
-    String password = view.getPaswordField().getText();
+      case 2:
+        PopUp.showInfo("Login Failed", "Invalid username or password.");
+        break;
 
-    if(FileHandler.tryLogin(username, password) != null) {
-      PopUp.showInfo("User Exists", "Username already taken. Please choose another.");
-      return;
-    } else {
-      User newUser = new User(username, password);
-      FileHandler.saveUser(newUser);
+      case 3:
+        if (username.contains(",") || password.contains(",")) {
+          PopUp.showWarning("Invalid Input", "Username and password cannot contain commas.");
+          return;
+        } else if (PopUp.showConfirmation("New User", "User not found. Would you like to create a new account?")) {
+          FileHandler.newUser(username, password);
+        }
+
+
+        break;  
+    
+      default:
+        PopUp.showError("Login Error", "An unexpected error occurred during login.");
+        break;
     }
   }
 }
