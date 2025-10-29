@@ -23,7 +23,7 @@ public class StartPageView extends VBox {
    * @param savedGamesMap A map containing saved game names and their corresponding types.
    */
   public StartPageView() {
-    setSpacing(20);
+    setSpacing(25);
     getStyleClass().addAll("start-page", "background");
     setAlignment(Pos.CENTER);
     
@@ -46,11 +46,11 @@ public class StartPageView extends VBox {
     password.getStyleClass().addAll( "text-field","standard");
     
     // Login button
-    login.getStyleClass().addAll("button", "standard");
+    login.getStyleClass().addAll("button", "standard", "large-size");
     login.setDisable(true); // Initially disabled
     
     // Exit button
-    exitButton.getStyleClass().addAll("button", "standard");
+    exitButton.getStyleClass().addAll("button", "standard", "large-size");
     
     // Add all components to the main VBox
     getChildren().addAll(title, information, username, password, login, exitButton);

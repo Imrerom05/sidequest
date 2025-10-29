@@ -2,6 +2,7 @@ package sidequest.view;
 
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 
 public class WorldPageView extends VBox {
@@ -12,17 +13,20 @@ public class WorldPageView extends VBox {
   private final Button deleteUserButton = new Button("Delete User");
 
   public WorldPageView() {
+    setSpacing(20);
     getStyleClass().addAll("world-page", "background");
     setAlignment(Pos.CENTER);
 
-    newAdventureButton.getStyleClass().addAll("button", "standard");
-    continueAdventureButton.getStyleClass().addAll("button", "standard");
-    backButton.getStyleClass().addAll("button", "standard");
-    exitButton.getStyleClass().addAll("button", "standard");
-    deleteUserButton.getStyleClass().addAll("button", "standard");
+    Label title = new Label("Sidequest");
+    title.getStyleClass().addAll("standard", "text-60");
 
-    setSpacing(20);
-    getChildren().addAll(newAdventureButton, continueAdventureButton, deleteUserButton, backButton, exitButton);
+    newAdventureButton.getStyleClass().addAll("button", "standard", "large-size");
+    continueAdventureButton.getStyleClass().addAll("button", "standard", "large-size");
+    backButton.getStyleClass().addAll("button", "standard", "large-size");
+    exitButton.getStyleClass().addAll("button", "standard", "large-size");
+    deleteUserButton.getStyleClass().addAll("button", "standard", "large-size");
+
+    getChildren().addAll(title, newAdventureButton, continueAdventureButton, deleteUserButton, backButton, exitButton);
   }
 
   public Button getNewAdventureButton() {

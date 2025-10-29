@@ -3,6 +3,8 @@ package sidequest.controller;
 import javafx.beans.value.ChangeListener;
 import sidequest.MyWindow;
 import sidequest.view.WorldPageView;
+import sidequest.controller.StartPageController;
+import sidequest.NavigationManager;
 
 public class WorldPageController {
     private final WorldPageView view;
@@ -24,6 +26,8 @@ public class WorldPageController {
 
   /** Initializes UI event listeners and bindings for buttons and input fields. */
   private void initialize() {
+    view.getBackButton().setOnAction(event -> NavigationManager.navigate(new StartPageController().getView()));
+    view.getExitButton().setOnAction(event -> MyWindow.closeApplication());
   }
 
   

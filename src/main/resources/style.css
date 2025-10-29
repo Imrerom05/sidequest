@@ -11,8 +11,8 @@
 }
 
 .world-page {
-  background-image: url("background-worldpage.png");
-  -fx-background-image: url("background-worldpage.png");
+  background-image: url("images/background-worldpage.png");
+  -fx-background-image: url("images/background-worldpage.png");
 }
 
 .standard {
@@ -96,4 +96,11 @@
 .button:focused {
     -fx-border-color: #cba96b;
     -fx-effect: dropshadow(gaussian, rgba(255, 215, 0, 0.5), 10, 0, 0, 3);
+}
+
+.large-size {
+  font-size: 22px;
+  -fx-font-size: 22px;
+  -fx-pref-width: 250px;
+  -fx-pref-height: 60px;
 }
