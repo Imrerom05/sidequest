@@ -1,6 +1,10 @@
 package sidequest.controller;
-import javafx.beans.value.ChangeListener;
+
+import sidequest.model.FileHandler;
 import sidequest.MyWindow;
+import sidequest.model.User;
+import javafx.beans.value.ChangeListener;
+import sidequest.view.PopUp;
 import sidequest.view.StartPageView;
 
 /**
@@ -57,10 +61,19 @@ public class StartPageController {
   private void login() {
     String username = view.getUsernameField().getText();
     String password = view.getPaswordField().getText();
+
+    if (FileHandler.tryLogin(username, password) != null) {
+      PopUp.showInfo("Login Successful", "Welcome back, " + username + "!");
+    } else {
+      PopUp.showInfo("Login Failed", "Invalid username or password.");
+    }
   }
 
   private void newUser() {
     String username = view.getUsernameField().getText();
     String password = view.getPaswordField().getText();
+
+    User newUser = new User(username, password);
+    FileHandler.saveUser(newUser);
   }
 }
