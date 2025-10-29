@@ -27,29 +27,27 @@ public class StartPageView extends VBox {
    */
   public StartPageView() {
     
-    /* 
     setSpacing(10);
     getStyleClass().addAll("start-page", "background");
     setAlignment(Pos.TOP_CENTER);
-    */
     
     // Title
     Label title = new Label("Welcome to Sidequest");
-    //title.getStyleClass().addAll("fantasy", "text-gold", "text-55");
+    title.getStyleClass().addAll("standard", "text-60");
     
     // Information Label
     Label information = new Label("Enter your username and password to begin your adventure!");
-    //subtitle.getStyleClass().addAll("fantasy", "text-gold", "text-40");
+    information.getStyleClass().addAll("standard", "text-40");
     
     // Username input
     username.setPromptText("Username");
     VBox.setMargin(username, new Insets(0, 100, 0, 100));
-    //username.getStyleClass().addAll("fantasy-text", "fantasy");
+    //username.getStyleClass().addAll("standard");
 
     // Pasword input
     password.setPromptText("Password");
     VBox.setMargin(username, new Insets(0, 100, 0, 100));
-    //username.getStyleClass().addAll("fantasy-text", "fantasy");
+    //password.getStyleClass().addAll("standard");
     
     // Login button
     //login.getStyleClass().addAll("button", "text-18", "fantasy");

@@ -38,7 +38,7 @@ public class MyWindow extends Application {
     Scene scene = new Scene(new StartPageController().getView());
 
     // Apply the stylesheet
-    //scene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
+    scene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
 
     // Set up and show the stage
     primaryStage.setScene(scene);
