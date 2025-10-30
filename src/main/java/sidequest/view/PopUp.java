@@ -39,7 +39,10 @@ public class PopUp {
         .getDialogPane()
         .getStylesheets()
         .add(PopUp.class.getResource("/style.css").toExternalForm());
-    alert.getDialogPane().getStyleClass().addAll("fantasy-dialog", "fantasy");
+    alert.getDialogPane().getStyleClass().addAll("pop-up");
+        // 🪄 Remove window frame
+    Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+    stage.initStyle(StageStyle.UNDECORATED); // removes OS window border
     alert.showAndWait();
   }
 
@@ -192,7 +195,7 @@ public class PopUp {
     // 🪄 Remove window frame
     Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
     stage.initStyle(StageStyle.UNDECORATED); // removes OS window border
-    
+
     Optional<ButtonType> result = alert.showAndWait();
     return result.isPresent() && result.get() == ButtonType.OK;
   }

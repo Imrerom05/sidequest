@@ -52,7 +52,7 @@ public class FileHandler {
           throw new IllegalArgumentException("Invalid player data format");
         }
 
-        if (data[0].equals(username) && data[1].equals(password)) {
+        if ((data[0]).toLowerCase().equals(username.toLowerCase()) && data[1].equals(password)) {
           return 1; // Login successful
         } else if (data[0].equals(username)) {
           return 2; // Username found but password incorrect

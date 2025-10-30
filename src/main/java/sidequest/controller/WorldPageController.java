@@ -45,7 +45,7 @@ public class WorldPageController {
   }
 
   private void deleteUser() {
-    if (PopUp.showConfirmation("Delete User", "Are you sure you want to delete your user account?\nThis action cannot be undone,\nand all progres will be lost.")) {
+    if (PopUp.showConfirmation("Delete User", "Are you sure you want to delete your user account?\nThis action cannot be undone,\nand all progress will be lost.")) {
         FileHandler.deleteUser(Game.getUser());
         NavigationManager.navigate(new StartPageController().getView());
     }
