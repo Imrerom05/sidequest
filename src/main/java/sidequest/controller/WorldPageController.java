@@ -39,6 +39,7 @@ public class WorldPageController {
   }
 
   private void newAdventure() {
+    NavigationManager.navigate(new ChoseHeroPageController().getView());
   }
 
   private void continueAdventure() {
