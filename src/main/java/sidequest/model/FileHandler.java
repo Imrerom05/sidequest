@@ -28,7 +28,6 @@ public class FileHandler {
     return FILE_DIRECTORY + fileName;
   }
 
-
   public static void newUser(String username, String password) {
     try (PrintWriter writer = new PrintWriter(new FileWriter(getFilePath("user.csv"), true))) {
       writer.println(username + "," + password);
@@ -89,5 +88,6 @@ public class FileHandler {
       throw new UncheckedIOException("Failed to save players. Couldn't write to file", e);
     }
   }
+ 
 }
 

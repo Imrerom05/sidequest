@@ -15,6 +15,13 @@
   -fx-background-image: url("images/background-worldpage.png");
 }
 
+.chose-hero-page {
+  background-image: url("images/background-choseheropage.png");
+  -fx-background-image: url("images/background-choseheropage.png");
+}
+
+
+
 .standard {
   font-family: "Algerian", "Copperplate", fantasy;
   -fx-font-family: "Algerian", "Copperplate", fantasy;
