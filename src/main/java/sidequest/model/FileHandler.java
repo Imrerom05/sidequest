@@ -54,7 +54,7 @@ public class FileHandler {
 
         if ((data[0]).toLowerCase().equals(username.toLowerCase()) && data[1].equals(password)) {
           return 1; // Login successful
-        } else if (data[0].equals(username)) {
+        } else if (data[0].toLowerCase().equals(username.toLowerCase())) {
           return 2; // Username found but password incorrect
         }
       }

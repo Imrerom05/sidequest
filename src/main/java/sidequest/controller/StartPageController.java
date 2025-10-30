@@ -85,7 +85,6 @@ public class StartPageController {
           NavigationManager.navigate(new WorldPageController().getView());
         }
 
-
         break;  
     
       default:
