@@ -33,17 +33,17 @@ public class StartPageController {
   /** Initializes UI event listeners and bindings for buttons and input fields. */
   private void initialize() {
     view.getLoginButton().setOnAction(event -> login());
+    view.getLoginButton().setDefaultButton(true);
     view.getExitButton().setOnAction(event -> MyWindow.closeApplication());
 
-    ChangeListener<Object> enabler =
-        (obs, oldV, newV) -> {
-          boolean disable = !allInputsValid();
-          view.getLoginButton().setDisable(disable);
-        };
-
+    ChangeListener<Object> enabler = (obs, oldV, newV) -> {
+      boolean disable = !allInputsValid();
+      view.getLoginButton().setDisable(disable);
+    };
 
     view.getUsernameField().textProperty().addListener(enabler);
     view.getPaswordField().textProperty().addListener(enabler);
+    
   }
 
   /**
@@ -65,6 +65,8 @@ public class StartPageController {
       case 1:
         Game.setUser(username);
         NavigationManager.navigate(new WorldPageController().getView());
+        view.getUsernameField().clear();
+        view.getPaswordField().clear();
         break;
 
       case 2:
@@ -78,6 +80,8 @@ public class StartPageController {
         } else if (PopUp.showConfirmation("New User", "User not found\nWould you like to create a new account?")) {
           FileHandler.newUser(username, password);
           Game.setUser(username);
+          view.getUsernameField().clear();
+          view.getPaswordField().clear();
           NavigationManager.navigate(new WorldPageController().getView());
         }
 
