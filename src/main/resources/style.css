@@ -15,6 +15,13 @@
   -fx-background-image: url("images/background-worldpage.png");
 }
 
+.chose-hero-page {
+  background-image: url("images/background-choseheropage.png");
+  -fx-background-image: url("images/background-choseheropage.png");
+}
+
+
+
 .standard {
   font-family: "Algerian", "Copperplate", fantasy;
   -fx-font-family: "Algerian", "Copperplate", fantasy;
@@ -154,7 +161,19 @@
 }
 
 /* Optional mystical glow animation */
-.pop-up {
+.dialog-pane.pop-up {
     -fx-background-insets: 0;
     -fx-opacity: 0.98;
+}
+
+.dialog-pane.pop-up > .content {
+    -fx-background-color: transparent;
+}
+
+.dialog-pane.pop-up > .content.label {
+    -fx-text-fill: #303952;
+}
+
+.dialog-pane > .graphic-container {
+    -fx-padding: 0 10 0 0;
 }

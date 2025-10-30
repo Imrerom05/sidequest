@@ -28,7 +28,6 @@ public class FileHandler {
     return FILE_DIRECTORY + fileName;
   }
 
-
   public static void newUser(String username, String password) {
     try (PrintWriter writer = new PrintWriter(new FileWriter(getFilePath("user.csv"), true))) {
       writer.println(username + "," + password);
@@ -52,9 +51,9 @@ public class FileHandler {
           throw new IllegalArgumentException("Invalid player data format");
         }
 
-        if (data[0].equals(username) && data[1].equals(password)) {
+        if ((data[0]).toLowerCase().equals(username.toLowerCase()) && data[1].equals(password)) {
           return 1; // Login successful
-        } else if (data[0].equals(username)) {
+        } else if (data[0].toLowerCase().equals(username.toLowerCase())) {
           return 2; // Username found but password incorrect
         }
       }
@@ -89,5 +88,6 @@ public class FileHandler {
       throw new UncheckedIOException("Failed to save players. Couldn't write to file", e);
     }
   }
+ 
 }
 
