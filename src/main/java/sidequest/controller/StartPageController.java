@@ -75,7 +75,7 @@ public class StartPageController {
         if (username.contains(",") || password.contains(",")) {
           PopUp.showWarning("Invalid Input", "Username and password cannot contain commas.");
           return;
-        } else if (PopUp.showConfirmation("New User", "User not found. Would you like to create a new account?")) {
+        } else if (PopUp.showConfirmation("New User", "User not found\nWould you like to create a new account?")) {
           FileHandler.newUser(username, password);
           Game.setUser(username);
           NavigationManager.navigate(new WorldPageController().getView());

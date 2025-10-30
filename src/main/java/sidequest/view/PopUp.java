@@ -8,9 +8,12 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceDialog;
 import javafx.scene.control.Dialog;
+import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextInputDialog;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 /**
  * PopUp class provides utility methods to display various types of popups in the game, such as
@@ -174,16 +177,22 @@ public class PopUp {
 
   public static boolean showConfirmation(String title, String message) {
     Alert alert = new Alert(AlertType.CONFIRMATION);
-    alert.setTitle(title);
+    alert.setTitle(null);
     alert.setHeaderText(null);
     alert.setContentText(message);
-    alert.setGraphic(null);
+    Label star = new Label("✨");
+    star.setStyle("-fx-font-size: 24px;");
+    alert.setGraphic(star);
     alert
         .getDialogPane()
         .getStylesheets()
         .add(PopUp.class.getResource("/style.css").toExternalForm());
-    alert.getDialogPane().getStyleClass().addAll("fantasy-dialog", "fantasy");
+    alert.getDialogPane().getStyleClass().addAll("pop-up");
 
+    // 🪄 Remove window frame
+    Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+    stage.initStyle(StageStyle.UNDECORATED); // removes OS window border
+    
     Optional<ButtonType> result = alert.showAndWait();
     return result.isPresent() && result.get() == ButtonType.OK;
   }

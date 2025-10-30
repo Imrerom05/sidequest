@@ -103,3 +103,58 @@
   -fx-pref-width: 250px;
   -fx-pref-height: 60px;
 }
+
+.dialog-pane.pop-up {
+    -fx-background-color: linear-gradient(to bottom right, #fef9f3, #d9e8ff);
+    -fx-border-color: #b4c8ff;
+    -fx-border-width: 2px;
+    -fx-border-radius: 16px;
+    -fx-background-radius: 16px;
+    -fx-effect: dropshadow(gaussian, rgba(180, 210, 255, 0.5), 20, 0.3, 0, 4);
+    -fx-padding: 16px;
+}
+
+/* Text inside the dialog */
+.dialog-pane .content.label {
+    -fx-text-fill: #303952; /* Deep mystical blue-gray */
+    -fx-font-family: "Georgia", "Serif";
+    -fx-font-size: 14px;
+    -fx-wrap-text: true;
+}
+
+/* Title text (if used) */
+.dialog-pane .header-panel .label {
+    -fx-text-fill: #2b3856;
+    -fx-font-family: "Palatino Linotype", "Serif";
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+}
+
+/* Buttons (OK / Cancel) */
+.dialog-pane .button {
+    -fx-background-color: linear-gradient(to bottom right, #fdfbff, #dbe6ff);
+    -fx-text-fill: #2f3a5e;
+    -fx-font-family: "Georgia", "Serif";
+    -fx-font-size: 13px;
+    -fx-border-color: #a7baff;
+    -fx-border-radius: 12px;
+    -fx-background-radius: 12px;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(180, 210, 255, 0.4), 6, 0.2, 0, 2);
+}
+
+.dialog-pane .button:hover {
+    -fx-background-color: linear-gradient(to bottom right, #ffffff, #e3f0ff);
+    -fx-border-color: #7fa8ff;
+    -fx-effect: dropshadow(gaussian, rgba(160, 190, 255, 0.6), 8, 0.3, 0, 2);
+}
+
+.dialog-pane .button:pressed {
+    -fx-background-color: #cadcff;
+}
+
+/* Optional mystical glow animation */
+.pop-up {
+    -fx-background-insets: 0;
+    -fx-opacity: 0.98;
+}
