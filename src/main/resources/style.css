@@ -27,6 +27,11 @@
   -fx-font-family: "Algerian", "Copperplate", fantasy;
 }
 
+.standard {
+  font-family: "Algerian", "Copperplate", fantasy;
+  -fx-font-family: "Algerian", "Copperplate", fantasy;
+}
+
 /* Font size utility classes */
 .text-60 { font-size: 60px; -fx-font-size: 60px; }
 .text-40 { font-size: 40px; -fx-font-size: 40px; }
@@ -34,6 +39,7 @@
 .text-20 { font-size: 20px; -fx-font-size: 20px; }
 .text-18 { font-size: 18px; -fx-font-size: 18px; }
 .text-16 { font-size: 16px; -fx-font-size: 16px; }
+.text-14 { font-size: 14px; -fx-font-size: 14px; }
 
 /* Input field */
 .text-field, .password-field {

@@ -22,7 +22,7 @@ public class NewHeroView extends VBox {
     private final Button selectButton;
 
     public NewHeroView(Hero hero) {
-        // Basic layout setup
+        setPrefWidth(220);
         setSpacing(10);
         setPadding(new Insets(10));
         setAlignment(Pos.CENTER);
@@ -34,6 +34,7 @@ public class NewHeroView extends VBox {
         nameLabel.setStyle("-fx-text-fill: white;");
 
         heroInfoLabel = new Label(hero.getHeroInfo());
+        heroInfoLabel.setFont(Font.font(14));
         heroInfoLabel.setStyle("-fx-text-fill: #cccccc;");
 
         // Hero image
@@ -43,17 +44,19 @@ public class NewHeroView extends VBox {
         } catch (Exception e) {
             System.out.println("/images/heroes/" + hero.getImage() + ".png");
         }
-        heroImage.setFitWidth(140);
-        heroImage.setFitHeight(140);
+        heroImage.setFitWidth(180);
+        heroImage.setFitHeight(180);
         heroImage.setPreserveRatio(true);
 
         // HP and Gold
         HPandGoldLabel = new Label(hero.getHPandGold());
         HPandGoldLabel.setStyle("-fx-text-fill: #cccccc; -fx-font-weight: bold;");
+        HPandGoldLabel.setFont(Font.font(14));
 
         // Stats
         statsLabel = new Label(hero.getStatsDescriprion());
-        statsLabel.setStyle("-fx-text-fill: #cccccc;");
+        statsLabel.setStyle("-fx-text-fill: #cccccc; -fx-font-weight: bold;");
+        statsLabel.setFont(Font.font(14));
 
         descriptionLabel = new Label(hero.getDescription());
         descriptionLabel.setStyle("-fx-text-fill: #cccccc;");

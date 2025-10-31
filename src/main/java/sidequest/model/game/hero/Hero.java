@@ -6,6 +6,7 @@ import java.util.Random;
 import java.util.HashMap;
 
 public class Hero {
+  private String gender;
   private String name;
   private String heroClass;
   private String race;
@@ -18,7 +19,8 @@ public class Hero {
   private Random random = new Random();
 
   public Hero(String heroClass, String race) {
-    name = FileHandler.newName();
+    setGender();
+    name = FileHandler.newName(gender);
     setBaseStats();
     setBaseHelth();
     baseMoney();
@@ -31,12 +33,20 @@ public class Hero {
 
   private void setBaseStats() {
 
-    stats.put("strength", random.nextInt(6)- 2);
-    stats.put("agility", random.nextInt(6)- 2);
-    stats.put("mind", random.nextInt(6)- 2);
-    stats.put("charisma", random.nextInt(6)- 2);
-    stats.put("luck", random.nextInt(6)- 2);
-    stats.put("endurance", random.nextInt(6)- 2);
+    stats.put("strength", random.nextInt(6) - 2);
+    stats.put("agility", random.nextInt(6) - 2);
+    stats.put("mind", random.nextInt(6) - 2);
+    stats.put("charisma", random.nextInt(6) - 2);
+    stats.put("luck", random.nextInt(6) - 2);
+    stats.put("endurance", random.nextInt(6) - 2);
+  }
+  
+  private void setGender() {
+    if (random.nextBoolean()) {
+      this.gender = "Male";
+    } else {
+      this.gender = "Female";
+    }
   }
 
   private void setBaseHelth() {
@@ -76,11 +86,11 @@ public class Hero {
   }
 
   public String getImage() {
-    return race.toLowerCase()+"_"+heroClass.toLowerCase();
+    return gender.toLowerCase() + "_" + race.toLowerCase()+"_"+heroClass.toLowerCase();
   }
 
   public String getHPandGold () {
-    return "HP: " + maxHealth + "  Gold: " + money;
+    return "HP: " + maxHealth + "   Gold: " + money;
   }
 
   public String getStatsDescriprion() {

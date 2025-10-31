@@ -90,16 +90,25 @@ public class FileHandler {
   }
 
 
-  public static String newName() {
+  public static String newName(String gender) {
+    String[] names;
+
+    if (gender.equals("Male")) {
+        names = new String[] {
+        "Bran", "Caspian", "Tom", "Bjørnar", "Eryn", "Quin", "Kai", "Kaite"
+        };
+      } else {
+        names = new String[] {
+        "Lotte", "Lyra", "Morain", "Olga", "Elara"
+        };
+      }
+    
     Random random = new Random();
-    String[] names = {
-        "Arin", "Bryn", "Cade", "Dara", "Eryn", "Finn", "Gwen", "Hale", "Ira", "Joss",
-        "Kara", "Lior", "Mira", "Nia", "Orin", "Pax", "Quin", "Rhea", "Sage", "Tess"
-    };
+
 
     String[] titles = {
-        "the Brave", "the Cunning", "the Wise", "the Swift", "the Bold",
-        "the Fierce", "the Just", "the Noble", "the Valiant", "the Fearless"
+        "the Brave", "Goats Bane", "the Wise", "the Swift", "the not so Brave",
+        "the tamer of Ducks", "Madens Bane", "Croser of Bridges"
     };
 
     return names[random.nextInt(names.length)]+" "+titles[random.nextInt(titles.length)];
