@@ -63,7 +63,7 @@ public class StartPageController {
 
     switch (FileHandler.login(username, password)) {
       case 1:
-        Game.setUser(username);
+        Game.startGame(username);
         NavigationManager.navigate(new WorldPageController().getView());
         view.getUsernameField().clear();
         view.getPaswordField().clear();
@@ -79,11 +79,12 @@ public class StartPageController {
           return;
         } else if (PopUp.showConfirmation("New User", "User not found\nWould you like to create a new account?")) {
           FileHandler.newUser(username, password);
-          Game.setUser(username);
+          Game.startGame(username);
           view.getUsernameField().clear();
           view.getPaswordField().clear();
           NavigationManager.navigate(new WorldPageController().getView());
         }
+
 
         break;  
     

@@ -34,6 +34,8 @@ public class ChoseHeroPageView extends VBox {
 
     HBox heros = new HBox();
     heros.getChildren().addAll(newHero1, newHero2, newHero3);
+    heros.setSpacing(20);
+    heros.setAlignment(Pos.CENTER);
 
     getChildren().addAll(title, heros, buttonBox);
   }

@@ -18,6 +18,7 @@ public class Hero {
     setBaseStats();
     setBaseHelth();
     baseMoney();
+    fullHeal();
   }
 
   public Hero(Class heroClass, Race race, Feat feat, Background background) {
@@ -28,6 +29,7 @@ public class Hero {
     setRace(race);
     setFeat(feat);
     setBackground(background);
+    fullHeal();
   }
 
   private void setBaseStats() {
@@ -74,6 +76,10 @@ public class Hero {
     this.money = 10 + stats.get("luck") + random.nextInt(6) - 3;
   }
 
+  private void fullHeal() {
+    this.currentHealth = maxHealth;
+  }
+
   private void setClass(Class heroClass) {
 
   }
@@ -99,11 +105,16 @@ public class Hero {
   }
 
   public String getImage() {
-    return "";
+    return "humanfighter";
+  }
+
+  public String getHPandGold () {
+    return "HP: " + maxHealth + "  Gold: " + money;
   }
 
   public String getStatsDescriprion() {
-    return "";
+    return "STR: " + stats.get("strength") + "  AGI: " + stats.get("agility") + "  MND: " + stats.get("mind") +
+           "\nCHA: " + stats.get("charisma") + "  LCK: " + stats.get("luck") + "  END: " + stats.get("endurance");
   }
 
   public String getDescription() {

@@ -16,6 +16,7 @@ public class NewHeroView extends VBox {
     private final Label nameLabel;
     private final Label heroInfoLabel;
     private final ImageView heroImage;
+    private final Label HPandGoldLabel;
     private final Label statsLabel;
     private final Label descriptionLabel;
     private final Button selectButton;
@@ -42,9 +43,13 @@ public class NewHeroView extends VBox {
         } catch (Exception e) {
             System.out.println("/images/heroes/" + hero.getImage() + ".png");
         }
-        heroImage.setFitWidth(120);
-        heroImage.setFitHeight(120);
+        heroImage.setFitWidth(140);
+        heroImage.setFitHeight(140);
         heroImage.setPreserveRatio(true);
+
+        // HP and Gold
+        HPandGoldLabel = new Label(hero.getHPandGold());
+        HPandGoldLabel.setStyle("-fx-text-fill: #cccccc; -fx-font-weight: bold;");
 
         // Stats
         statsLabel = new Label(hero.getStatsDescriprion());
@@ -58,7 +63,7 @@ public class NewHeroView extends VBox {
         selectButton.setStyle("-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-weight: bold;");
 
         // Assemble layout
-        getChildren().addAll(nameLabel,heroInfoLabel, heroImage, statsLabel, descriptionLabel, selectButton);
+        getChildren().addAll(nameLabel,heroInfoLabel, heroImage, HPandGoldLabel, statsLabel, descriptionLabel, selectButton);
     }
 
     // Getters for controller access
