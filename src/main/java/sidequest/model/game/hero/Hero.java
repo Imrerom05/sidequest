@@ -14,6 +14,12 @@ public class Hero {
   private HashMap<String, Integer> stats = new HashMap<>();
   private Random random = new Random();
 
+  public Hero() {
+    setBaseStats();
+    setBaseHelth();
+    baseMoney();
+  }
+
   public Hero(Class heroClass, Race race, Feat feat, Background background) {
     setBaseStats();
     setBaseHelth();
@@ -26,7 +32,7 @@ public class Hero {
 
   private void setBaseStats() {
     int modefier = 0;
-    int statsMaker[] = new int[5];
+    int statsMaker[] = new int[6];
 
     for (int i = 0; i < 5; i++) {
       stats.put("strength", 0);
@@ -68,20 +74,42 @@ public class Hero {
     this.money = 10 + stats.get("luck") + random.nextInt(6) - 3;
   }
 
-  public void setClass(Class heroClass) {
+  private void setClass(Class heroClass) {
 
   }
 
-  public void setRace(Race race) {
+  private void setRace(Race race) {
 
   }
 
-  public void setFeat(Feat feat) {
+  private void setFeat(Feat feat) {
 
   }
 
-  public void setBackground(Background background) {
+  private void setBackground(Background background) {
 
   }
+
+  public String getName() {
+    return name;
+  }
+
+  public String getHeroInfo() {
+    return "";
+  }
+
+  public String getImage() {
+    return "";
+  }
+
+  public String getStatsDescriprion() {
+    return "";
+  }
+
+  public String getDescription() {
+    return "";
+  }
+
+
 }
 

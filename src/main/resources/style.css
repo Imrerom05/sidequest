@@ -6,18 +6,18 @@
 }
 
 .start-page {
-  background-image: url("images/background-loginpage.png");
-  -fx-background-image: url("images/background-loginpage.png");
+  background-image: url("images/backgrounds/background-loginpage.png");
+  -fx-background-image: url("images/backgrounds/background-loginpage.png");
 }
 
 .world-page {
-  background-image: url("images/background-worldpage.png");
-  -fx-background-image: url("images/background-worldpage.png");
+  background-image: url("images/backgrounds/background-worldpage.png");
+  -fx-background-image: url("images/backgrounds/background-worldpage.png");
 }
 
 .chose-hero-page {
-  background-image: url("images/background-choseheropage.png");
-  -fx-background-image: url("images/background-choseheropage.png");
+  background-image: url("images/backgrounds/background-choseheropage.png");
+  -fx-background-image: url("images/backgrounds/background-choseheropage.png");
 }
 
 

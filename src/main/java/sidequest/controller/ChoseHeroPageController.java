@@ -3,7 +3,7 @@ package sidequest.controller;
 import sidequest.MyWindow;
 import sidequest.NavigationManager;
 import sidequest.view.ChoseHeroPageView;
-import sidequest.view.WorldPageView;
+
 
 public class ChoseHeroPageController {
   private final ChoseHeroPageView view;
