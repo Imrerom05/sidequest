@@ -6,21 +6,31 @@
 }
 
 .start-page {
-  background-image: url("images/background-loginpage.png");
-  -fx-background-image: url("images/background-loginpage.png");
+  background-image: url("images/backgrounds/background-loginpage.png");
+  -fx-background-image: url("images/backgrounds/background-loginpage.png");
 }
 
 .world-page {
-  background-image: url("images/background-worldpage.png");
-  -fx-background-image: url("images/background-worldpage.png");
+  background-image: url("images/backgrounds/background-worldpage.png");
+  -fx-background-image: url("images/backgrounds/background-worldpage.png");
 }
 
 .chose-hero-page {
-  background-image: url("images/background-choseheropage.png");
-  -fx-background-image: url("images/background-choseheropage.png");
+  background-image: url("images/backgrounds/background-choseheropage.png");
+  -fx-background-image: url("images/backgrounds/background-choseheropage.png");
+}
+
+.village {
+  background-image: url("images/backgrounds/village.png");
+  -fx-background-image: url("images/backgrounds/village.png");
 }
 
 
+
+.standard {
+  font-family: "Algerian", "Copperplate", fantasy;
+  -fx-font-family: "Algerian", "Copperplate", fantasy;
+}
 
 .standard {
   font-family: "Algerian", "Copperplate", fantasy;
@@ -34,6 +44,7 @@
 .text-20 { font-size: 20px; -fx-font-size: 20px; }
 .text-18 { font-size: 18px; -fx-font-size: 18px; }
 .text-16 { font-size: 16px; -fx-font-size: 16px; }
+.text-14 { font-size: 14px; -fx-font-size: 14px; }
 
 /* Input field */
 .text-field, .password-field {

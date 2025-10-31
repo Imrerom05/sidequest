@@ -88,6 +88,31 @@ public class FileHandler {
       throw new UncheckedIOException("Failed to save players. Couldn't write to file", e);
     }
   }
+
+
+  public static String newName(String gender) {
+    String[] names;
+
+    if (gender.equals("Male")) {
+        names = new String[] {
+        "Bran", "Caspian", "Tom", "Bjørnar", "Eryn", "Quin", "Kai", "Kaite"
+        };
+      } else {
+        names = new String[] {
+        "Lotte", "Lyra", "Morain", "Olga", "Elara"
+        };
+      }
+    
+    Random random = new Random();
+
+
+    String[] titles = {
+        "the Brave", "Goats Bane", "the Wise", "the Swift", "the not so Brave",
+        "the tamer of Ducks", "Madens Bane", "Croser of Bridges"
+    };
+
+    return names[random.nextInt(names.length)]+" "+titles[random.nextInt(titles.length)];
+  }
  
 }
 

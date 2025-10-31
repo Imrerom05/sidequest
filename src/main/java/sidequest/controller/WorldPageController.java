@@ -38,6 +38,16 @@ public class WorldPageController {
     view.getDeleteUserButton().setOnAction(event -> deleteUser());
   }
 
+  private void closeApplication() {
+    Game.exitGame();
+    MyWindow.closeApplication();
+  }
+
+  private void back() {
+    Game.exitGame();
+    NavigationManager.navigate(new StartPageController().getView());
+  }
+
   private void newAdventure() {
     NavigationManager.navigate(new ChoseHeroPageController().getView());
   }

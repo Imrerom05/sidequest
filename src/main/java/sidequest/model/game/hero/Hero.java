@@ -1,11 +1,15 @@
 package sidequest.model.game.hero;
 
+import sidequest.model.FileHandler;
 import sidequest.model.game.hero.*;
 import java.util.Random;
 import java.util.HashMap;
 
 public class Hero {
+  private String gender;
   private String name;
+  private String heroClass;
+  private String race;
 
   private int maxHealth;
   private int currentHealth;
@@ -14,74 +18,90 @@ public class Hero {
   private HashMap<String, Integer> stats = new HashMap<>();
   private Random random = new Random();
 
-  public Hero(Class heroClass, Race race, Feat feat, Background background) {
+  public Hero(String heroClass, String race) {
+    setGender();
+    name = FileHandler.newName(gender);
     setBaseStats();
     setBaseHelth();
     baseMoney();
     setClass(heroClass);
     setRace(race);
-    setFeat(feat);
-    setBackground(background);
+/*     setFeat(feat);
+    setBackground(background); */
+    fullHeal();
   }
 
   private void setBaseStats() {
-    int modefier = 0;
-    int statsMaker[] = new int[5];
 
-    for (int i = 0; i < 5; i++) {
-      stats.put("strength", 0);
-      stats.put("agility", 0);
-      stats.put("mind", 0);
-      stats.put("charisma", 0);
-      stats.put("luck", 0);
-      stats.put("endurance", 0);
+    stats.put("strength", random.nextInt(6) - 2);
+    stats.put("agility", random.nextInt(6) - 2);
+    stats.put("mind", random.nextInt(6) - 2);
+    stats.put("charisma", random.nextInt(6) - 2);
+    stats.put("luck", random.nextInt(6) - 2);
+    stats.put("endurance", random.nextInt(6) - 2);
+  }
+  
+  private void setGender() {
+    if (random.nextBoolean()) {
+      this.gender = "Male";
+    } else {
+      this.gender = "Female";
     }
-
-    for (int i = 0; i < 6; i++) {
-      statsMaker[i] = (int) (Math.random() * 8) - 3 + modefier;
-      if (statsMaker[i] > 1) {
-        modefier--;
-      } else if (statsMaker[i] < -1) {
-        modefier++;
-      }
-    }
-    for (int i = statsMaker.length - 1; i > 0; i--) {
-      int index = random.nextInt(i + 1);
-      int temp = statsMaker[index];
-      statsMaker[index] = statsMaker[i];
-      statsMaker[i] = temp;
-    }
-
-    stats.put("strength", statsMaker[0]);
-    stats.put("agility", statsMaker[1]);
-    stats.put("mind", statsMaker[2]);
-    stats.put("charisma", statsMaker[3]);
-    stats.put("luck", statsMaker[4]);
-    stats.put("endurance", statsMaker[5]);
   }
 
   private void setBaseHelth() {
-    this.maxHealth = 8 + stats.get("endurance") + random.nextInt(4) - 2;
+    this.maxHealth = 8 + stats.get("endurance");
   }
 
   private void baseMoney() {
-    this.money = 10 + stats.get("luck") + random.nextInt(6) - 3;
+    this.money = 8 + stats.get("luck") + random.nextInt(3) - 1;
   }
 
-  public void setClass(Class heroClass) {
+  private void fullHeal() {
+    this.currentHealth = maxHealth;
+  }
+
+  private void setClass(String heroClass) {
+    this.heroClass = heroClass;
+  }
+
+  private void setRace(String race) {
+    this.race = race;
+  }
+
+  private void setFeat(String feat) {
 
   }
 
-  public void setRace(Race race) {
+  private void setBackground(String background) {
 
   }
 
-  public void setFeat(Feat feat) {
-
+  public String getName() {
+    return name;
   }
 
-  public void setBackground(Background background) {
-
+  public String getHeroInfo() {
+    return race + " " + heroClass;
   }
+
+  public String getImage() {
+    return gender.toLowerCase() + "_" + race.toLowerCase()+"_"+heroClass.toLowerCase();
+  }
+
+  public String getHPandGold () {
+    return "HP: " + maxHealth + "   Gold: " + money;
+  }
+
+  public String getStatsDescriprion() {
+    return "STR: " + stats.get("strength") + "  AGI: " + stats.get("agility") + "  INT: " + stats.get("mind") +
+           "\nCHA: " + stats.get("charisma") + "  LCK: " + stats.get("luck") + "  END: " + stats.get("endurance");
+  }
+
+  public String getDescription() {
+    return "";
+  }
+
+
 }
 
