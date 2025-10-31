@@ -24,6 +24,9 @@ public class World {
   private ArrayList<String> races;
   @JsonProperty
   private ArrayList<String> backgrounds;
+  @JsonProperty
+  private ArrayList<String> startingLocations;
+
 
   private Random random = new Random();
 
@@ -36,6 +39,7 @@ public class World {
     this.user = user;
     this.classes = new ArrayList<>();
     this.races = new ArrayList<>();
+    this.startingLocations = new ArrayList<>();
     this.classes.add(className);
     this.races.add(raceName);
 
@@ -53,19 +57,23 @@ public class World {
     classes.add(className);
   }
 
-/*   public void addFeat(String featName) {
+  public void addFeat(String featName) {
     feats.add(featName);
-  } */
+  }
 
   public void addRace(String raceName) {
     races.add(raceName);
   }
 
-  /* 
+  public void addStartingLocation(String locationName) {
+    startingLocations.add(locationName);
+  }
+
+   
   public void addBackground(String backgroundName) {
     backgrounds.add(backgroundName);
   }
-  */
+  
   
     /**
    * Saves the current state of the board to a JSON file.

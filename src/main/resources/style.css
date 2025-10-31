@@ -20,6 +20,11 @@
   -fx-background-image: url("images/backgrounds/background-choseheropage.png");
 }
 
+.village {
+  background-image: url("images/backgrounds/village.png");
+  -fx-background-image: url("images/backgrounds/village.png");
+}
+
 
 
 .standard {

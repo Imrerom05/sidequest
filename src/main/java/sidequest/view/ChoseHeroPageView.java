@@ -25,7 +25,7 @@ public class ChoseHeroPageView extends VBox {
     backButton.getStyleClass().addAll("button", "standard", "large-size");
     exitButton.getStyleClass().addAll("button", "standard", "large-size");
 
-    HBox buttonBox = new HBox(20, backButton, exitButton);
+    HBox buttonBox = new HBox(20, backButton);
     buttonBox.setAlignment(Pos.CENTER);
 
     newHero1 = new NewHeroController().getView();

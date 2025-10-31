@@ -28,6 +28,11 @@ public class NewHeroController {
 
   /** Initializes UI event listeners and bindings for buttons and input fields. */
   private void initialize() {
+    view.getSelectButton().setOnAction(event -> selectButton());
+  }
+
+  private void selectButton() {
+    NavigationManager.navigate(new LocationPageController().getView());
   }
   
 }

@@ -94,7 +94,7 @@ public class Hero {
   }
 
   public String getStatsDescriprion() {
-    return "STR: " + stats.get("strength") + "  AGI: " + stats.get("agility") + "  MND: " + stats.get("mind") +
+    return "STR: " + stats.get("strength") + "  AGI: " + stats.get("agility") + "  INT: " + stats.get("mind") +
            "\nCHA: " + stats.get("charisma") + "  LCK: " + stats.get("luck") + "  END: " + stats.get("endurance");
   }
 
