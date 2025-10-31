@@ -9,6 +9,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
+import sidequest.model.game.hero.Hero;
+import java.util.Random;
 
 
 public class World {
@@ -23,37 +25,48 @@ public class World {
   @JsonProperty
   private ArrayList<String> backgrounds;
 
+  private Random random = new Random();
+
+
+
   public World() {
   }
 
-  public World(String user, String className, String featName, String raceName, String backgroundName) {
+  public World(String user, String className, String raceName) {
     this.user = user;
     this.classes = new ArrayList<>();
-    this.feats = new ArrayList<>();
     this.races = new ArrayList<>();
-    this.backgrounds = new ArrayList<>();
     this.classes.add(className);
-    this.feats.add(featName);
     this.races.add(raceName);
-    this.backgrounds.add(backgroundName);
+
+    /*     this.feats = new ArrayList<>();
+    this.backgrounds = new ArrayList<>();
+    this.feats.add(featName);
+    this.backgrounds.add(backgroundName); */
+  }
+  
+  public Hero newHero() {
+    return new Hero(classes.get(random.nextInt(classes.size())), races.get(random.nextInt(races.size())));
   }
 
   public void addClass(String className) {
     classes.add(className);
   }
 
-  public void addFeat(String featName) {
+/*   public void addFeat(String featName) {
     feats.add(featName);
-  }
+  } */
 
   public void addRace(String raceName) {
     races.add(raceName);
   }
 
+  /* 
   public void addBackground(String backgroundName) {
     backgrounds.add(backgroundName);
   }
-
+  */
+  
     /**
    * Saves the current state of the board to a JSON file.
    *
@@ -66,9 +79,9 @@ public class World {
     objectMapper.enable(SerializationFeature.INDENT_OUTPUT); // Pretty-print the JSON
     try {
       objectMapper.writeValue(
-          new File("src/main/resources/files/" + user + ".world.json"), this);
+          new File("src/main/resources/files/worlds/" + user + ".world.json"), this);
     } catch (IOException e) {
-      throw new UncheckedIOException("Something went wrong saving "+ user +"s world", e);
+      throw new UncheckedIOException("Something went wrong saving " + user + "s world", e);
     }
   }
 
@@ -80,15 +93,15 @@ public class World {
    * @param gameName the name of the board file to load
    * @return the loaded BoardSnakesAndLadders instance, or null if loading failed
    */
-  public static World loadBoard(String user) {
+  public static World loadWorld(String user) {
     ObjectMapper objectMapper = new ObjectMapper();
     try {
       return objectMapper.readValue(
-          new File("src/main/resources/files/" + user + ".world.json"),
+          new File("src/main/resources/files/worlds/" + user + ".world.json"),
           World.class);
     } catch (IOException e) {
-      throw new UncheckedIOException("Something went wrong loading \"+ user +\"s world\"", e);
+      return null;
     }
   }
-  
+
 }

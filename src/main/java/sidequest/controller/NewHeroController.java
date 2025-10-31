@@ -5,6 +5,7 @@ import sidequest.NavigationManager;
 import sidequest.view.ChoseHeroPageView;
 import sidequest.view.NewHeroView;
 import sidequest.model.game.hero.*;
+import sidequest.model.game.Game;
 
 public class NewHeroController {
     private final NewHeroView view;
@@ -12,7 +13,7 @@ public class NewHeroController {
   
   /** Constructs a new StartPageController. Initializes the view and UI event handlers. */
   public NewHeroController() {
-    this.view = new NewHeroView(new Hero());
+    this.view = new NewHeroView(Game.newHero());
     initialize();
   }
 

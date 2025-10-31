@@ -2,6 +2,7 @@ package sidequest.controller;
 
 import sidequest.MyWindow;
 import sidequest.NavigationManager;
+import sidequest.model.game.Game;
 import sidequest.view.ChoseHeroPageView;
 
 
@@ -27,7 +28,12 @@ public class ChoseHeroPageController {
   /** Initializes UI event listeners and bindings for buttons and input fields. */
   private void initialize() {
     view.getBackButton().setOnAction(event -> NavigationManager.navigate(new WorldPageController().getView()));
-    view.getExitButton().setOnAction(event -> MyWindow.closeApplication());
+    view.getExitButton().setOnAction(event -> closeApplication());
+  }
+
+  private void closeApplication() {
+    Game.exitGame();
+    MyWindow.closeApplication();
   }
   
 }

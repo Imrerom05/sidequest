@@ -7,7 +7,7 @@ import javafx.scene.layout.VBox;
 import sidequest.controller.NewHeroController;
 
 public class ChoseHeroPageView extends VBox {
-  private final Button backButton = new Button("Back");
+  private final Button backButton = new Button("Leave Adventure");
   private final Button exitButton = new Button("Exit Game");
   private final NewHeroView newHero1;
   private final NewHeroView newHero2;
@@ -34,7 +34,7 @@ public class ChoseHeroPageView extends VBox {
 
     HBox heros = new HBox();
     heros.getChildren().addAll(newHero1, newHero2, newHero3);
-    heros.setSpacing(20);
+    heros.setSpacing(35);
     heros.setAlignment(Pos.CENTER);
 
     getChildren().addAll(title, heros, buttonBox);

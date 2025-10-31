@@ -22,6 +22,7 @@ public class WorldPageView extends VBox {
 
     newAdventureButton.getStyleClass().addAll("button", "standard", "large-size");
     continueAdventureButton.getStyleClass().addAll("button", "standard", "large-size");
+    continueAdventureButton.setDisable(true);
     backButton.getStyleClass().addAll("button", "standard", "large-size");
     exitButton.getStyleClass().addAll("button", "standard", "large-size");
     deleteUserButton.getStyleClass().addAll("button", "standard", "large-size");

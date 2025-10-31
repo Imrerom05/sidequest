@@ -63,7 +63,7 @@ public class NewHeroView extends VBox {
         selectButton.setStyle("-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-weight: bold;");
 
         // Assemble layout
-        getChildren().addAll(nameLabel,heroInfoLabel, heroImage, HPandGoldLabel, statsLabel, descriptionLabel, selectButton);
+        getChildren().addAll(nameLabel,heroInfoLabel, heroImage, HPandGoldLabel, statsLabel, selectButton);
     }
 
     // Getters for controller access

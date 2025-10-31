@@ -88,6 +88,22 @@ public class FileHandler {
       throw new UncheckedIOException("Failed to save players. Couldn't write to file", e);
     }
   }
+
+
+  public static String newName() {
+    Random random = new Random();
+    String[] names = {
+        "Arin", "Bryn", "Cade", "Dara", "Eryn", "Finn", "Gwen", "Hale", "Ira", "Joss",
+        "Kara", "Lior", "Mira", "Nia", "Orin", "Pax", "Quin", "Rhea", "Sage", "Tess"
+    };
+
+    String[] titles = {
+        "the Brave", "the Cunning", "the Wise", "the Swift", "the Bold",
+        "the Fierce", "the Just", "the Noble", "the Valiant", "the Fearless"
+    };
+
+    return names[random.nextInt(names.length)]+" "+titles[random.nextInt(titles.length)];
+  }
  
 }
 
