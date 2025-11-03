@@ -108,7 +108,7 @@ public class FileHandler {
 
     String[] titles = {
         "the Brave", "Goats Bane", "the Wise", "the Swift", "the not so Brave",
-        "the tamer of Ducks", "Madens Bane", "Croser of Bridges"
+        "tamer of Ducks", "Madens Bane", "Croser of Bridges"
     };
 
     return names[random.nextInt(names.length)]+" "+titles[random.nextInt(titles.length)];
