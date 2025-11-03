@@ -26,19 +26,16 @@ public class Hero {
     baseMoney();
     setClass(heroClass);
     setRace(race);
-/*     setFeat(feat);
+/*  setFeat(feat);
     setBackground(background); */
     fullHeal();
   }
 
   private void setBaseStats() {
-
     stats.put("strength", random.nextInt(6) - 2);
     stats.put("agility", random.nextInt(6) - 2);
     stats.put("mind", random.nextInt(6) - 2);
     stats.put("charisma", random.nextInt(6) - 2);
-    stats.put("luck", random.nextInt(6) - 2);
-    stats.put("endurance", random.nextInt(6) - 2);
   }
   
   private void setGender() {
@@ -50,11 +47,11 @@ public class Hero {
   }
 
   private void setBaseHelth() {
-    this.maxHealth = 8 + stats.get("endurance");
+    this.maxHealth = 8 + stats.get("strength");
   }
 
   private void baseMoney() {
-    this.money = 8 + stats.get("luck") + random.nextInt(3) - 1;
+    this.money = 4 +  random.nextInt(7) - 3;
   }
 
   private void fullHeal() {
@@ -81,6 +78,14 @@ public class Hero {
     return name;
   }
 
+  public int getMaxHealth() {
+    return maxHealth;
+  }
+
+  public int getGold() {
+    return money;
+  }
+
   public String getHeroInfo() {
     return race + " " + heroClass;
   }
@@ -94,8 +99,8 @@ public class Hero {
   }
 
   public String getStatsDescriprion() {
-    return "STR: " + stats.get("strength") + "  AGI: " + stats.get("agility") + "  INT: " + stats.get("mind") +
-           "\nCHA: " + stats.get("charisma") + "  LCK: " + stats.get("luck") + "  END: " + stats.get("endurance");
+    return "STR: " + stats.get("strength") + "  AGI: " + stats.get("agility")
+     +"\nINT: " + stats.get("mind") + "  CHA: " + stats.get("charisma");
   }
 
   public String getDescription() {
