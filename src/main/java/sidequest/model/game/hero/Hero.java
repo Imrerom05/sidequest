@@ -51,7 +51,7 @@ public class Hero {
   }
 
   private void baseMoney() {
-    this.money = 4 +  random.nextInt(7) - 3;
+    this.money = 3 +  random.nextInt(5) - 2;
   }
 
   private void fullHeal() {
